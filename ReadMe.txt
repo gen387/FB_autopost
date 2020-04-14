@@ -1,3 +1,7 @@
+It's my first program in Python and first time using Selenium, so it's extremely simple. But it works.
+
+--
+
 Install:
 - python
 - pip
