@@ -14,7 +14,8 @@ import time
 chrome_options = webdriver.ChromeOptions()
 prefs = {"profile.default_content_setting_values.notifications" : 2}
 chrome_options.add_experimental_option("prefs",prefs)
-driver = webdriver.Chrome("/Users/er/Boty/PyBot FB/chromedriver", options=chrome_options)
+#your path to chromedriver need to be put here - file has to in the same folder as executable file
+driver = webdriver.Chrome("chromedriver file path", options=chrome_options)
 driver.get('https://www.facebook.com/login.php?login_attempt=1&lwv=110')
 print("Opened facebook...")
 
@@ -37,7 +38,8 @@ time.sleep(2)
 print("FB opened")
 
 #posting with XXs delay
-filePath = '/Users/er/Boty/PyBot FB/links/links.txt'
+#your path to links.txt file
+filePath = '*/links/links.txt' 
 with open(filePath) as readFile:
     for cnt, line in enumerate(readFile):
         driver.get("https://www.facebook.com")
@@ -46,7 +48,8 @@ with open(filePath) as readFile:
         newStatus = "{}".format(line)
         statusBox.send_keys(newStatus)
         time.sleep(2)
-        postbutton = driver.find_element_by_xpath("//button[contains(.,'Opublikuj')]")
+        #depending on language version 'Publish' may be a different string
+        postbutton = driver.find_element_by_xpath("//button[contains(.,'Publish')]")
         time.sleep(random.randrange(60, 120, 1))
         postbutton.click()
         time.sleep(60)
